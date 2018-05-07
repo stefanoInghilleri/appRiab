@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b2dce8; -fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DatiPazienteController">
+   <top>
+      <Label alignment="CENTER" prefHeight="55.0" prefWidth="430.0" text="Dati paziente" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lucida Bright Demibold" size="30.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="txtNome" layoutX="279.0" layoutY="24.0" />
+            <TextField fx:id="txtCognome" layoutX="279.0" layoutY="59.0" />
+            <Label layoutX="142.0" layoutY="145.0" prefHeight="17.0" prefWidth="87.0" text="Sesso" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font></Label>
+            <ChoiceBox fx:id="choiceSesso" layoutX="300.0" layoutY="143.0" prefHeight="25.0" prefWidth="71.0" />
+            <Label layoutX="142.0" layoutY="184.0" prefHeight="27.0" prefWidth="151.0" text="Tipo intervento" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font></Label>
+            <ChoiceBox fx:id="choiceTipoIntervento" layoutX="300.0" layoutY="185.0" prefHeight="25.0" prefWidth="71.0" />
+            <Label layoutX="142.0" layoutY="224.0" prefHeight="30.0" prefWidth="147.0" text="Arto interessato" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font></Label>
+            <ChoiceBox fx:id="choiceArtoInteressato" layoutX="300.0" layoutY="226.0" prefHeight="25.0" prefWidth="71.0" />
+            <Button layoutX="252.0" layoutY="279.0" mnemonicParsing="false" onAction="#doInsert" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 3px;" text="Inserisci" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="14.0" />
+               </font></Button>
+            <DatePicker fx:id="txtEtà" layoutX="279.0" layoutY="92.0" prefHeight="23.0" prefWidth="147.0" promptText="gg/mm/aaaa" />
+            <Label layoutX="142.0" layoutY="26.0" prefHeight="17.0" prefWidth="87.0" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="61.0" prefHeight="17.0" prefWidth="87.0" text="Cognome" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="94.0" prefHeight="17.0" prefWidth="87.0" text="Età" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

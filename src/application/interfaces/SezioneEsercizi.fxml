@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="853.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SezioneEserciziController">
+   <top>
+      <AnchorPane prefHeight="50.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="851.0" style="-fx-background-color: #b2dce8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" maxWidth="200.0" minWidth="200.0" prefHeight="50.0" prefWidth="186.0" style="-fx-background-color: #b2dce8;" text="Benvenuto" textAlignment="CENTER">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtUser" alignment="CENTER" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #b2dce8;" textAlignment="CENTER">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" maxWidth="380.0" minWidth="380.0" prefHeight="60.0" prefWidth="364.0" style="-fx-background-color: #b2dce8;" text="nella sezione Esercizi" textAlignment="CENTER">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="461.0" prefWidth="653.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="91.0" prefWidth="656.0" style="-fx-background-color: #95b4c6;" text="Svolgi l'esercizio seguendo il video dimostrativo" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="18.0" />
+                     </font>
+                  </Label>
+                  <WebView fx:id="webVideo" prefHeight="246.0" prefWidth="491.0">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                  </WebView>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#doEsercizioSeguente" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Procedi" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="250.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <HBox prefHeight="112.0" prefWidth="653.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="237.0" text="Descrizione esercizio" textFill="WHITE">
+                           <font>
+                              <Font name="Lucida Bright Demibold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtDescrizioneEs" editable="false" prefHeight="100.0" prefWidth="388.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" maxHeight="93.0" prefHeight="93.0" prefWidth="870.0" style="-fx-border-color: black; -fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <ProgressBar fx:id="barProgresso" prefWidth="200.0" progress="0.0" />
+            <Label alignment="CENTER" text="Giorno:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="txtGiorno" prefHeight="33.0" prefWidth="44.0">
+               <font>
+                  <Font name="Lucida Bright Regular" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label alignment="CENTER" text="Ora:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="txtOra" prefHeight="33.0" prefWidth="71.0">
+               <font>
+                  <Font name="Lucida Bright Regular" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#getConsigliUtili" prefHeight="48.0" prefWidth="168.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Consigli Utili" textAlignment="CENTER" textFill="#fffefe">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox prefHeight="461.0" prefWidth="198.0" style="-fx-border-color: white; -fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="121.0" prefWidth="198.0" style="-fx-background-color: #95b4c6;" text="Esercizi giornalieri" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Label>
+            <ListView prefHeight="275.0" prefWidth="198.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#getInfoEsercizio" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="info" textAlignment="CENTER" textFill="#fffefe">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </VBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="198.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-width: 0.1px;">
+               <children>
+                  <Label alignment="CENTER" text="Serie:" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtSerie" alignment="CENTER" editable="false" prefHeight="33.0" prefWidth="45.0">
+                     <font>
+                        <Font name="Lucida Bright Regular" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="198.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-width: 0.1;">
+               <children>
+                  <Label alignment="CENTER" text="Ripetizioni:" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtRipetizioni" alignment="CENTER" editable="false" prefHeight="33.0" prefWidth="46.0" style="-fx-border-width: 0.1px;">
+                     <font>
+                        <Font name="Lucida Bright Regular" size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

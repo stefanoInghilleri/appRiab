@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PunteggioProtocolloController">
+   <center>
+      <AnchorPane prefHeight="91.0" prefWidth="401.0" style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" layoutX="94.0" prefHeight="73.0" prefWidth="600.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="264.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label text="Punteggio Ottenuto:" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Bright Demibold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtPunteggioWomac" editable="false" prefHeight="47.0" prefWidth="86.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button layoutX="215.0" layoutY="254.0" mnemonicParsing="false" onAction="#doProcedi" prefHeight="56.0" prefWidth="169.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Procedi" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="txtIndicazioni" layoutX="51.0" layoutY="100.0" prefHeight="140.0" prefWidth="510.0" promptText="Indicazioni" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label fx:id="txtUser" alignment="CENTER" prefHeight="55.0" prefWidth="610.0" style="-fx-background-color: #b2dce8;" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lucida Bright Demibold" size="30.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

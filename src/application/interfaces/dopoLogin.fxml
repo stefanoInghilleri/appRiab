@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DopoLoginController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" layoutX="36.0" layoutY="135.0" mnemonicParsing="false" onAction="#getIniziaEsercizi" prefHeight="107.0" prefWidth="251.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Inizia gli Esercizi" textAlignment="CENTER" textFill="#fffefe">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="315.0" layoutY="135.0" mnemonicParsing="false" onAction="#getConsigliUtili" prefHeight="107.0" prefWidth="251.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Consigli Utili" textAlignment="CENTER" textFill="#fffefe">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="18.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="39.0" prefWidth="123.0" text="Benvenuto:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Regular" size="18.0" />
+               </font>
+            </Label>
+                        <Label fx:id="txtNomeUtente" alignment="CENTER" layoutX="186.0" layoutY="14.0" prefHeight="56.0" prefWidth="203.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Demibold" size="20.0" />
+               </font>
+            </Label>
+
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label alignment="CENTER" prefHeight="56.0" prefWidth="642.0" style="-fx-background-color: #b2dce8;" text="Area Personale" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lucida Bright Demibold" size="30.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
