@@ -86,6 +86,9 @@ public class ProtocolloWomacController {
 			 this.btnProcedi.setVisible(true);
 		 
 	 }
+	 /**
+	  * test 1
+	  * */
 
 	 @FXML
 	    void doProcedi(ActionEvent event) throws IOException {
