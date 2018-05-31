@@ -6,6 +6,7 @@ public class DomandaWomac {
 	private String notaBene;
 	private String domanda;
 	private int punteggio;
+	private boolean contato;
 	
 	public DomandaWomac(int idDomanda, String notaBene, String domanda) {
 		this.idDomanda = idDomanda;
@@ -65,6 +66,15 @@ public class DomandaWomac {
 		if (idDomanda != other.idDomanda)
 			return false;
 		return true;
+	}
+
+	public void setContato(boolean b) {
+		this.contato=b;
+		
+	}
+
+	public boolean isContato() {
+		return contato;
 	}
 	
 	
