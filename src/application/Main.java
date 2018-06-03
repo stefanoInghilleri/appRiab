@@ -16,6 +16,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Model;
 import model.Paziente;
+import model.Seduta;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -68,13 +69,13 @@ public class Main extends Application {
 		stage.show();	
 	}
 
-	public void showDopoLogin(String nome, String cognome)  throws IOException {
+	public void showDopoLogin(Paziente paziente)  throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("interfaces\\dopoLogin.fxml"));
 		BorderPane root = (BorderPane)loader.load();
 		DopoLoginController controller= loader.getController();
 		
-		controller.setModel(model, this, nome, cognome);
+		controller.setModel(model,this, paziente);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
@@ -111,13 +112,13 @@ public class Main extends Application {
 		
 	}
 
-	public void showSezioneEsercizi(String nomeUtente) throws IOException {
+	public void showSezioneEsercizi(Paziente p, Seduta s) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("interfaces\\SezioneEsercizi.fxml"));
 		BorderPane root = (BorderPane)loader.load();
 		SezioneEserciziController controller= loader.getController();
 		
-		controller.setModel(model, this, nomeUtente);
+		controller.setModel(model, this, p, s);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
@@ -126,13 +127,13 @@ public class Main extends Application {
 		
 	}
 
-	public void showSezioneConsigli(String nomeUtente) throws IOException {
+	public void showSezioneConsigli(Paziente p, Seduta s) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("interfaces\\SezioneConsigliUtili.fxml"));
 		BorderPane root = (BorderPane)loader.load();
 		SezioneConsigliController controller= loader.getController();
 		
-		controller.setModel(model, this, nomeUtente);
+		controller.setModel(model, this, p, s);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);

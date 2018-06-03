@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import model.DomandaWomac;
 import model.Esercizio;
@@ -52,10 +53,10 @@ public class Dao {
 	            PreparedStatement st = conn.prepareStatement(sql);
 	            ResultSet rs = st.executeQuery();             // restituisce i dati della tabella
 	            List<Warning> list = new ArrayList<>();
-	            int i=0;
+	      
 	            while(rs.next()){                  // fino a quando non trova una linea vuota continua ad aggiungere
 	            list.add(new Warning(rs.getInt("ID"),rs.getString("tipologia") ,rs.getString("CONSIGLI_E_PRECAUZIONI")));
-	            i++;
+	
 	            }
 	            conn.close();
 	            return list;
@@ -68,22 +69,23 @@ public class Dao {
 	    }
 
 
-	public List<Seduta> getSedutaGiornaliera(int giorno)
+	public Seduta getSedutaGiornaliera(int giorno)
 	    {
-	        String sql = "select  * from es_2_mesi ";
+	        String sql = "select  * from es_2_mesi where giorno=?";
+	        Seduta sedutaGiornaliera=null;
 	        try
 	        {
 	            Connection conn = ConnectDB.getConnection();
 	            PreparedStatement st = conn.prepareStatement(sql);
+	            st.setInt(1, giorno);
 	            ResultSet rs = st.executeQuery();             // restituisce i dati della tabella
-	            List<Seduta> sedute = new LinkedList<>();
-	            while(rs.next()){
+	            if(rs.next()){
 					
-			sedute.add(new Seduta(rs.getInt("Giorno"),rs.getString("Es_mattino"),rs.getString("Es_pomeriggio"),rs.getString("Ripetizioni"),rs.getString("Note")));
+	            	sedutaGiornaliera= new Seduta(rs.getInt("Giorno"),rs.getString("Es_mattino"),rs.getString("Es_pomeriggio"),rs.getString("Ripetizioni"),rs.getString("Note"));
 			}
 	            
 	            conn.close();
-	            return sedute;
+	            return sedutaGiornaliera;
 	        }
 	        catch(SQLException e)
 	        {
@@ -94,7 +96,7 @@ public class Dao {
 
 
 
-	public List<Esercizio> getAllEsercizi()
+	public Esercizio getEsercizio(int idEsercizio)
 	    {
 	        String sql = "select  * from descrizione_es ";
 	        try
@@ -102,14 +104,16 @@ public class Dao {
 	            Connection conn = ConnectDB.getConnection();
 	            PreparedStatement st = conn.prepareStatement(sql);
 	            ResultSet rs = st.executeQuery();             // restituisce i dati della tabella
-	            List<Esercizio> esercizi=new LinkedList<>();
+	            Esercizio esercizio=null;
 	            while(rs.next()){
 					
-			esercizi.add(new Esercizio(rs.getInt("ID"),rs.getString("Tipologia"),rs.getString("Descrizione")));
+			esercizio= new Esercizio(rs.getInt("ID"),
+					rs.getString("Tipologia"),rs.getString("Descrizione"),
+					rs.getString("videourl"));
 			}
 	            
 	            conn.close();
-	            return esercizi;
+	            return esercizio;
 	        }
 	        catch(SQLException e)
 	        {
@@ -130,7 +134,8 @@ public class Dao {
             while(rs.next()){
 				
 		pazienti.add(new Paziente(rs.getInt("Id_Paziente"),rs.getString("nome"),rs.getString("cognome"), rs.getDate("eta").toLocalDate(),
-				rs.getString("sesso"), rs.getString("tipo_intervento"), rs.getString("arto_interessato"), rs.getInt("punteggio_womac")));
+				rs.getString("sesso"), rs.getString("tipo_intervento"), rs.getString("arto_interessato"), rs.getInt("punteggio_womac"),
+				 rs.getInt("numeroSedute"),rs.getDate("seduta1").toLocalDate()));
 		}
             
             conn.close();
@@ -144,9 +149,9 @@ public class Dao {
     }
 	
 	
-	public boolean checkLogin(String nome, String cognome) {
+	public Paziente checkLogin(String nome, String cognome, Map<Integer, Paziente> pazienti) {
 		  String sql = "select id_paziente from pazienti where nome=? and cognome=?";
-	      boolean found=false;
+	  
 		  try
 	        {
 	            Connection conn = ConnectDB.getConnection();
@@ -155,18 +160,16 @@ public class Dao {
 	            st.setString(2, cognome);
 	            ResultSet rs = st.executeQuery();             // restituisce i dati della tabella
 	           if(rs.next())
-	        	   found=true;
-	           else
-	        	   found=false;
-	            
+	        	   return pazienti.get(rs.getInt("id_paziente"));
+	          
 	            conn.close();
-	            return found;
+
 	        }
 	        catch(SQLException e)
 	        {
 	            e.printStackTrace();
 	        }
-	        return false;
+	        return null;
 	}
 
 	public List<DomandaWomac> getDomandeWomac() {
@@ -217,16 +220,16 @@ public class Dao {
         return null;
 	}
 
-	public void salvaPunteggioWomac(Paziente paziente) {
+	public void aggiornaPaziente(Paziente paziente) {
 		 
-		String sql = "UPDATE pazienti SET punteggio_Womac=? WHERE id_Paziente=?";
+		String sql = "UPDATE pazienti SET punteggio_Womac=?, numeroSedute=? WHERE id_Paziente=?";
 	        try
 	        {
 	            Connection conn = ConnectDB.getConnection();
 	            PreparedStatement st = conn.prepareStatement(sql);
 	            st.setInt(1, paziente.getPunteggioWomac());
-	            st.setInt(2, paziente.getIdPaziente());
-	            
+	            st.setInt(2, paziente.getNumeroSedute());
+	            st.setInt(3, paziente.getIdPaziente());
 	            st.executeUpdate();
 	        }
 	        catch(SQLException e)

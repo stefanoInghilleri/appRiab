@@ -1,34 +1,46 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Seduta {
 	
-	private int giorno;
+	private int numeroSeduta;
+	private List<Esercizio> esMattino;
+	private List<Esercizio> esPomeriggio;
+	private List<Integer> idMattino;
+	private List<Integer> idPomeriggio;
 	private String esParte1;
 	private String esParte2;
 	private String ripetizioni;
 	private String note;
 	
-	private List<Integer> esMattino;
-	private List<Integer> esPomeriggio;
-	
 	public Seduta(int giorno, String esParte1, String esParte2, String ripetizioni, String note) {
-		this.giorno = giorno;
+		this.numeroSeduta = giorno;
 		this.esParte1 = esParte1;
 		this.esParte2 = esParte2;
-		this.ripetizioni = ripetizioni;
-		this.note = note;
-		this.setEsMattino(esParte1);
-		this.setEsPomeriggio(esParte2);
+		this.ripetizioni=ripetizioni;
+		this.note=note;
+		this.setIdMattino(esParte1);
+		this.setIdPomeriggio(esParte2);
+		this.esMattino=new LinkedList<>();
+		this.esPomeriggio=new LinkedList<>();
 	}
 
-	public int getGiorno() {
-		return giorno;
+	public int getNumeroSeduta() {
+		return numeroSeduta;
 	}
 
-	public void setGiorno(int giorno) {
-		this.giorno = giorno;
+	public String getNote() {
+		return note;
+	}
+
+	public String getRipetizioni() {
+		return ripetizioni;
+	}
+
+	public void setNumeroSeduta(int numeroSeduta) {
+		this.numeroSeduta = numeroSeduta;
 	}
 
 	public String getEsParte1() {
@@ -47,54 +59,57 @@ public class Seduta {
 		this.esParte2 = esParte2;
 	}
 
-	public String getRipetizioni() {
-		return ripetizioni;
-	}
 
-	public void setRipetizioni(String ripetizioni) {
-		this.ripetizioni = ripetizioni;
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public List<Integer> getEsMattino() {
+	public List<Esercizio> getEsMattino() {
 		return esMattino;
 	}
 
-	public void setEsMattino(String esMatt) {
+	public void setEsMattino(Esercizio esMattino) {
+		this.esMattino.add(esMattino);
+	}
+
+	public void setEsPomeriggio(Esercizio esPomeriggio) {
+		this.esPomeriggio.add(esPomeriggio);
+	}
+
+	public void setIdMattino(String esMatt) {
 		
-		this.esMattino=new LinkedList<>();
+		this.idMattino=new LinkedList<>();
 		StringTokenizer st = new StringTokenizer(esMatt,";");  
 		     
-		   while (st.hasMoreTokens()) {  
-			   esMattino.add(Integer.parseInt(st.nextToken()));
+		  while (st.hasMoreTokens()) {  
+			  
+			idMattino.add(Integer.parseInt(st.nextToken().trim()));
 		     }  
 	}
 
-	public List<Integer> getEsPomeriggio() {
+	public List<Esercizio> getEsPomeriggio() {
 		return esPomeriggio;
 	}
 
-	public void setEsPomeriggio(String esPome) {
-		this.esPomeriggio=new LinkedList<>();
+	public void setIdPomeriggio(String esPome) {
+		
+		this.idPomeriggio=new LinkedList<>();
 		StringTokenizer st = new StringTokenizer(esPome,";");  
 		     
 		   while (st.hasMoreTokens()) {  
-			   esPomeriggio.add(Integer.parseInt(st.nextToken()));
+			   idPomeriggio.add(Integer.parseInt(st.nextToken().trim()));
 		     }
+	}
+
+	public List<Integer> getIdMattino() {
+		return idMattino;
+	}
+
+	public List<Integer> getIdPomeriggio() {
+		return idPomeriggio;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + giorno;
+		result = prime * result + numeroSeduta;
 		return result;
 	}
 
@@ -107,11 +122,10 @@ public class Seduta {
 		if (getClass() != obj.getClass())
 			return false;
 		Seduta other = (Seduta) obj;
-		if (giorno != other.giorno)
+		if (numeroSeduta != other.numeroSeduta)
 			return false;
 		return true;
 	}
-	
 	
 
 }

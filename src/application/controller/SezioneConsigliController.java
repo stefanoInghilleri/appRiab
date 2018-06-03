@@ -10,12 +10,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.Model;
+import model.Paziente;
+import model.Seduta;
 import model.Warning;
 
 public class SezioneConsigliController {
 	
 	 Model model;
 	 Main main;
+	 private Paziente p;
+	 private Seduta seduta;
 	
 	private Label nomeUtente;
 	
@@ -32,14 +36,15 @@ public class SezioneConsigliController {
 	 
 	  @FXML
 	    void getTornaAreaP(ActionEvent event) throws IOException {
-	    	main.showSezioneEsercizi(nomeUtente.getText());
+	    	main.showSezioneEsercizi(p, seduta);
 	    }
 
-	public void setModel(Model model, Main main, String nomeU) {
+	public void setModel(Model model, Main main, Paziente p, Seduta s) {
 		this.model=model;
 		this.main=main;
-		this.nomeUtente=new Label(nomeU);
+		this.nomeUtente=new Label(p.getNome()+" "+p.getCognome());
 	//	this.nomeUtente.setText(nomeU);
+		this.seduta=s;
 	}
 
 

@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import application.Main;
 import javafx.event.ActionEvent;
@@ -10,12 +11,18 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
+import model.Esercizio;
 import model.Model;
+import model.Paziente;
+import model.Seduta;
 
 public class SezioneEserciziController {
 
 	private Model model;
 	private Main main;
+	private Paziente paziente;
+	private Seduta seduta;
+	private Esercizio esCorrente;
 	
 	@FXML
     private TextField txtRipetizioni;
@@ -43,7 +50,7 @@ public class SezioneEserciziController {
 	
 	  @FXML
 	    void getConsigliUtili(ActionEvent event) throws IOException {
-	    	main.showSezioneConsigli(txtUser.getText());
+	    	main.showSezioneConsigli(paziente, seduta);
 	    }
 	  
 	  @FXML
@@ -56,10 +63,19 @@ public class SezioneEserciziController {
 	    	
 	    }
 
-	public void setModel(Model model, Main main, String nomeUtente) {
+	public void setModel(Model model, Main main, Paziente p, Seduta s) {
 		this.model=model;
 		this.main=main;
-		this.txtUser.setText(nomeUtente);
+		this.txtUser.setText(p.getNome()+ " "+p.getCognome());
+		this.paziente=p;
+		this.seduta=s;
+		this.txtDescrizioneEs.appendText(s.getEsMattino().get(0).getTipo()+"\n\n"+
+		s.getEsMattino().get(0).getDescrizione());
+		
+		this.txtGiorno.setText(p.getNumeroSedute()+"");
+		this.txtOra.setText(LocalDateTime.now().getHour()+":"+LocalDateTime.now().getMinute());
+		this.txtRipetizioni.setText(s.getRipetizioni());
+		this.txtSerie.setText(s.getNote());
 	}
 	
 

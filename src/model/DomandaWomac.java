@@ -5,13 +5,14 @@ public class DomandaWomac {
 	private int idDomanda;
 	private String notaBene;
 	private String domanda;
-	private int punteggio;
+	private int risposta;
 	private boolean contato;
 	
 	public DomandaWomac(int idDomanda, String notaBene, String domanda) {
 		this.idDomanda = idDomanda;
 		this.notaBene = notaBene;
 		this.domanda = domanda;
+		this.contato=false;
 	}
 
 	public int getIdDomanda() {
@@ -46,12 +47,12 @@ public class DomandaWomac {
 		return result;
 	}
 
-	public int getPunteggio() {
-		return punteggio;
+	public int getRisposta() {
+		return risposta;
 	}
 
-	public void setPunteggio(int punteggio) {
-		this.punteggio = punteggio;
+	public void setRisposta(int punteggio) {
+		this.risposta = punteggio;
 	}
 
 	@Override

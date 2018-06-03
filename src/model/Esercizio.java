@@ -4,12 +4,14 @@ public class Esercizio {
 	
 	private int idEsercizio;
 	private String tipo;
+	private String videoURL;
 	private String descrizione;
 	
-	public Esercizio(int idEsercizio, String tipo, String descrizione) {
+	public Esercizio(int idEsercizio, String tipo, String descrizione, String videourl) {
 		this.idEsercizio = idEsercizio;
 		this.tipo = tipo;
 		this.descrizione = descrizione;
+		this.videoURL=videourl;
 	}
 
 	public int getIdEsercizio() {
@@ -34,6 +36,14 @@ public class Esercizio {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
+	}
+	
+	public String getVideoURL() {
+		return videoURL;
+	}
+
+	public void setVideoURL(String videoURL) {
+		this.videoURL = videoURL;
 	}
 
 	@Override

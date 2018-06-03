@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.Model;
+import model.Paziente;
 
 public class LoginController {
 
@@ -26,11 +27,11 @@ public class LoginController {
     @FXML
     void doLogin(ActionEvent event) throws IOException {
     	
-    	boolean found=false;
+    	Paziente p=null;
     	
-    	found= model.checkLogin(this.txtNomeLogin.getText(),this.txtCognomeLogin.getText());
-    	if(found==true)
-    		main.showDopoLogin(this.txtNomeLogin.getText(),this.txtCognomeLogin.getText());
+    	p= model.checkLogin(this.txtNomeLogin.getText(),this.txtCognomeLogin.getText());
+    	if(p!=null)
+    		main.showDopoLogin(p);
     	else{
     		this.txtInfoLogin.setText("*Attenzione nome o cognome errati");
     		this.txtNomeLogin.clear();

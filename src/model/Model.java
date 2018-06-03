@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import dao.Dao;
@@ -11,6 +12,9 @@ public class Model {
 	private List<DomandaWomac> domande;
 	private List<PunteggiWomac> punteggi;
 	private List<Warning> consigli;
+	private LocalDate sedutaGiorno1;
+	
+
 	
 	public Model(){
 		this.dao= new Dao();
@@ -20,7 +24,8 @@ public class Model {
 		}
 		this.punteggi=dao.getAllPunteggi();
 		this.consigli=dao.getAllWarning();
-	}
+
+		}
 
 	public void insertPaziente(Paziente p) {
 		
@@ -35,11 +40,13 @@ public class Model {
 		dao.inserisciPaziente(p);
 	}
 
-	public boolean checkLogin(String nome, String cognome) {
+	public Paziente checkLogin(String nome, String cognome) {
 		
-		boolean found=dao.checkLogin(nome,cognome);
+		Paziente p=dao.checkLogin(nome,cognome, mapPazienti);
+		if (p!=null)
+			return p;
 		
-		return found;
+		return null;
 	}
 
 	public List<DomandaWomac> getDomandeWomac() {
@@ -54,7 +61,7 @@ public class Model {
 		int max=Integer.MIN_VALUE;
 		
 		for(DomandaWomac dw: domande){
-			puntiTot+=dw.getPunteggio();
+			puntiTot+=dw.getRisposta();
 		}
 		paziente.setPunteggioWomac(puntiTot);
 		for(PunteggiWomac p: punteggi){
@@ -64,9 +71,10 @@ public class Model {
 				   min=Integer.parseInt(st.nextToken());
 				   max=Integer.parseInt(st.nextToken());
 			     }
-			   if(paziente.getPunteggioWomac()>=min && paziente.getPunteggioWomac()<=max){
+			   if(paziente.getPunteggioWomac()>min && paziente.getPunteggioWomac()<max){
 				   
-				//   dao.salvaPunteggioWomac(paziente);
+				   paziente.setPrimaSeduta(LocalDate.now());
+				   dao.aggiornaPaziente(paziente);
 				   return p.getIndicazione();
 			   }
 		}
@@ -76,5 +84,24 @@ public class Model {
 	public List<Warning> getConsigli() {
 		return consigli;
 	}
-	
+	public Seduta areaPersonale(Paziente paziente){
+		
+		LocalDate today=LocalDate.now();
+		int numeroSeduta=today.getDayOfYear()-paziente.getPrimaSeduta().getDayOfYear();
+		
+		if(numeroSeduta!=paziente.getNumeroSedute())
+			dao.aggiornaPaziente(paziente);
+		
+		if(numeroSeduta==0)
+			numeroSeduta++;
+			
+		Seduta sedutaGiornaliera= dao.getSedutaGiornaliera(numeroSeduta);
+		for(int i: sedutaGiornaliera.getIdMattino()){
+			sedutaGiornaliera.setEsMattino(dao.getEsercizio(i));
+		}
+		for(int i: sedutaGiornaliera.getIdPomeriggio()){
+			sedutaGiornaliera.setEsPomeriggio(dao.getEsercizio(i));
+		}
+		return sedutaGiornaliera;
+	}
 }

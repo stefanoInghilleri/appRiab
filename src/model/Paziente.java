@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Paziente {
 	
@@ -14,8 +16,11 @@ public class Paziente {
 	private String artoInteressato;
 	private int punteggioWomac;
 	private String indicazione;
+	private int numeroSedute;
+	private LocalDate primaSeduta;
 	
-	public Paziente(int idPaziente, String nome, String cognome, LocalDate età, String sesso, String tipoIntervento, String artoInteressato, int punteggioWomac) {
+	public Paziente(int idPaziente, String nome, String cognome, LocalDate età, String sesso, String tipoIntervento, 
+			String artoInteressato, int punteggioWomac, int numSedute,LocalDate primaSeduta) {
 		
 		this.idPaziente=idPaziente;
 		this.nome = nome;
@@ -25,11 +30,15 @@ public class Paziente {
 		this.tipoIntervento = tipoIntervento;
 		this.artoInteressato = artoInteressato;
 		this.punteggioWomac=punteggioWomac;
+		this.primaSeduta=primaSeduta;
+		this.numeroSedute=numSedute;
 	}
 
 	public Paziente() {
 		
 	}
+
+
 
 	public int getIdPaziente() {
 		return idPaziente;
@@ -130,6 +139,20 @@ public class Paziente {
 
 	public String getIndicazione() {
 		return indicazione;
+	}
+
+	public LocalDate getPrimaSeduta() {
+		// TODO Auto-generated method stub
+		return primaSeduta;
+	}
+
+	public int getNumeroSedute() {
+		
+		return numeroSedute;
+	}
+
+	public void setPrimaSeduta(LocalDate primaSeduta) {
+		this.primaSeduta = primaSeduta;
 	}
 
 	

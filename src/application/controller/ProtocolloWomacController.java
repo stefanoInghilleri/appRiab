@@ -22,7 +22,7 @@ public class ProtocolloWomacController {
 	Model model;
 	private Paziente paziente;
 	private List<DomandaWomac> domande;
-	private static int cntDom=0;
+	private static int cntDom=1;
 	
 	   @FXML
 	    private TextArea txtNb;
@@ -46,7 +46,14 @@ public class ProtocolloWomacController {
 	 @FXML
 	    void doForward(ActionEvent event) throws IOException {
 		 
-		 if(cntDom+1<24){
+		
+		 try{
+		 
+		 if(cntDom==24)
+			 this.btnProcedi.setVisible(true);
+		
+		 else{ 
+		 if(cntDom<23){
 	    
 			 this.txtDomandaWomac.clear();
 			 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
@@ -56,35 +63,37 @@ public class ProtocolloWomacController {
 			 if(!domande.get(cntDom+1).isContato() ){
 	     
 				 RadioButton selected = (RadioButton) womac.getSelectedToggle();
-				 domande.get(cntDom).setPunteggio(Integer.parseInt(selected.getId()));
+				 domande.get(cntDom).setRisposta(Integer.parseInt(selected.getId()));
 				 domande.get(cntDom).setContato(true);
 				 womac.getSelectedToggle().setSelected(false);
 				 cntDom++;
 			 }
 			 else{
-				 womac.getToggles().get(domande.get(cntDom+1).getPunteggio()).setSelected(true);	
+				 womac.getToggles().get(domande.get(cntDom+1).getRisposta()).setSelected(true);	
 				 cntDom++;
 				 this.txtDomandaWomac.clear();
 				 this.txtDomandaWomac.setText(domande.get(cntDom+1).getDomanda());
 				 this.txtNb.clear();
 				 this.txtNb.setText(domande.get(cntDom+1).getNotaBene());
 			 }
+			 
 		 }
 		 
-		 if(cntDom+1==24){
+		 else{
 			 this.txtDomandaWomac.clear();
 			 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
 			 this.txtNb.clear();
 			 this.txtNb.setText(domande.get(cntDom).getNotaBene());
 			 RadioButton selected = (RadioButton) womac.getSelectedToggle();
-			 domande.get(cntDom).setPunteggio(Integer.parseInt(selected.getId()));
+			 domande.get(cntDom).setRisposta(Integer.parseInt(selected.getId()));
 			 domande.get(cntDom).setContato(true);
 			 womac.getSelectedToggle().setSelected(false);
 			 cntDom++;
 		 }
-		 if(cntDom==24)
-			 this.btnProcedi.setVisible(true);
-		 
+		 }
+		 }catch(Exception e){
+			 this.txtDomandaWomac.setText("Attenzione! Assicurati di aver selezionato la domanda");
+		 }
 	 }
 	 /**
 	  * test 1
@@ -93,9 +102,8 @@ public class ProtocolloWomacController {
 	 @FXML
 	    void doProcedi(ActionEvent event) throws IOException {
 		 
-		 
 		 RadioButton selected = (RadioButton) womac.getSelectedToggle();
-		 domande.get(23).setPunteggio(Integer.parseInt(selected.getId()));
+		 domande.get(23).setRisposta(Integer.parseInt(selected.getId()));
 
 		 String indicazione=model.calcolaPunteggio(domande, paziente);
 		 paziente.setIndicazione(indicazione);
@@ -105,9 +113,11 @@ public class ProtocolloWomacController {
 	 @FXML
 	    void doBack(ActionEvent event) throws IOException {
 		 
+
 		 if(cntDom>1){
 		 cntDom--;
-		 womac.getToggles().get(domande.get(cntDom).getPunteggio()).setSelected(true);
+		 System.out.println("domanda numero" +cntDom+" risposta: "+domande.get(cntDom).getRisposta());
+		 womac.getToggles().get(domande.get(cntDom).getRisposta()).setSelected(true);
 		 this.txtDomandaWomac.clear();
 		 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
 		 this.txtNb.clear();
@@ -116,6 +126,7 @@ public class ProtocolloWomacController {
 	 }
 	 
 	public void setModel(Model model, Main main, Paziente p) {
+	
 		this.model=model;
 		this.main=main;
 		this.paziente=p;
@@ -123,7 +134,7 @@ public class ProtocolloWomacController {
 		domande=model.getDomandeWomac();
 		this.txtNb.setText(domande.get(0).getNotaBene());
 		this.txtDomandaWomac.setText(domande.get(0).getDomanda());
-		this.cntDom=domande.get(0).getIdDomanda();
+		
 	}
 
 }
