@@ -196,7 +196,7 @@
                   <Insets bottom="20.0" left="250.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="labelFine" alignment="CENTER" prefHeight="27.0" prefWidth="702.0" text="Complimenti hai completato la tua sessione di esercizi" textFill="#63e14a" visible="false">
+            <Label fx:id="labelFine" alignment="CENTER" prefHeight="27.0" prefWidth="702.0" text="Complimenti hai terminato la tua sessione di esercizi" textFill="#63e14a" visible="false">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
