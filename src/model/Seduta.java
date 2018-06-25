@@ -75,12 +75,14 @@ public class Seduta {
 	public void setIdMattino(String esMatt) {
 		
 		this.idMattino=new LinkedList<>();
-		StringTokenizer st = new StringTokenizer(esMatt,";");  
-		     
-		  while (st.hasMoreTokens()) {  
-			  
-			idMattino.add(Integer.parseInt(st.nextToken().trim()));
-		     }  
+		String x[] = esMatt.split(";");
+		  try{   
+		    for(int i=0;i<x.length;i++) {  
+			   idMattino.add(Integer.parseInt(x[i].trim()));
+		   		}
+		  }    
+		  catch(Exception e){
+		  }
 	}
 
 	public List<Esercizio> getEsPomeriggio() {
@@ -90,11 +92,14 @@ public class Seduta {
 	public void setIdPomeriggio(String esPome) {
 		
 		this.idPomeriggio=new LinkedList<>();
-		StringTokenizer st = new StringTokenizer(esPome,";");  
-		     
-		   while (st.hasMoreTokens()) {  
-			   idPomeriggio.add(Integer.parseInt(st.nextToken().trim()));
-		     }
+		String x[] = esPome.split(";");
+		  try{   
+		    for(int i=0;i<x.length;i++) {  
+			   idPomeriggio.add(Integer.parseInt(x[i].trim()));
+		   		}
+		  }    
+		  catch(Exception e){
+		  }
 	}
 
 	public List<Integer> getIdMattino() {

@@ -53,9 +53,9 @@ public class DatiPazienteController {
 	public void setModel(Main main, Model model) {
 		this.model=model;
 		this.main=main;
-		this.choiceSesso.getItems().addAll("Maschio","Femmina");
+		this.choiceSesso.getItems().addAll("Femmina","Maschio");
 		this.choiceTipoIntervento.getItems().addAll("Anca","Ginocchio");
-		this.choiceArtoInteressato.getItems().addAll("Sinistro","Destro");
+		this.choiceArtoInteressato.getItems().addAll("Destro","Sinistro");
 	}
 
 }

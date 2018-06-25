@@ -36,7 +36,17 @@ public class PunteggioProtocolloController {
 			this.main=main;
 			this.model=model;
 			this.txtUser.setText(p.getNome()+" "+p.getCognome());
-			this.txtPunteggioWomac.setText(p.getPunteggioWomac()+"");
-			this.txtIndicazioni.setText(p.getIndicazione());
+			this.txtPunteggioWomac.setText(p.getPunteggioWomac1()+"");
+			
+			String x[]=p.getIndicazione().split(" ");
+			String result="";
+			for(int j=0; j<x.length;j++){
+				
+				result+=x[j]+" ";	
+				
+				if(j%7==0 && j!=0)
+					result+="\n";
+			}
+			this.txtIndicazioni.setText(result);
 		}
 }

@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Dao {
 
 	public void inserisciPaziente(Paziente paziente) 
 	{
-	String sql= "insert into pazienti values (?,?,?,?,?,?,?,?)"; 
+	String sql= "insert into pazienti values (?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
 	 try
 	        {
 	            Connection conn = ConnectDB.getConnection();
@@ -36,6 +37,11 @@ public class Dao {
 	            st.setString(6, paziente.getTipoIntervento());
 	            st.setString(7, paziente.getArtoInteressato());
 	            st.setInt(8, 0);
+	            st.setInt(9, 0);
+	            st.setInt(10, 0);
+	            st.setInt(11, 0);
+	            st.setInt(12, 1);
+	            st.setDate(13, Date.valueOf(LocalDate.now()));
 	            st.executeUpdate();
 	        }
 	        catch(SQLException e)
@@ -55,7 +61,7 @@ public class Dao {
 	            List<Warning> list = new ArrayList<>();
 	      
 	            while(rs.next()){                  // fino a quando non trova una linea vuota continua ad aggiungere
-	            list.add(new Warning(rs.getInt("ID"),rs.getString("tipologia") ,rs.getString("CONSIGLI_E_PRECAUZIONI")));
+	            list.add(new Warning(rs.getInt("ID"),rs.getString("categoria") ,rs.getString("tipologia") ,rs.getString("CONSIGLI_E_PRECAUZIONI")));
 	
 	            }
 	            conn.close();
@@ -98,14 +104,15 @@ public class Dao {
 
 	public Esercizio getEsercizio(int idEsercizio)
 	    {
-	        String sql = "select  * from descrizione_es ";
+	        String sql = "select  * from descrizione_es where id=?";
 	        try
 	        {
 	            Connection conn = ConnectDB.getConnection();
 	            PreparedStatement st = conn.prepareStatement(sql);
+	            st.setInt(1, idEsercizio);
 	            ResultSet rs = st.executeQuery();             // restituisce i dati della tabella
 	            Esercizio esercizio=null;
-	            while(rs.next()){
+	            if(rs.next()){
 					
 			esercizio= new Esercizio(rs.getInt("ID"),
 					rs.getString("Tipologia"),rs.getString("Descrizione"),
@@ -134,7 +141,8 @@ public class Dao {
             while(rs.next()){
 				
 		pazienti.add(new Paziente(rs.getInt("Id_Paziente"),rs.getString("nome"),rs.getString("cognome"), rs.getDate("eta").toLocalDate(),
-				rs.getString("sesso"), rs.getString("tipo_intervento"), rs.getString("arto_interessato"), rs.getInt("punteggio_womac"),
+				rs.getString("sesso"), rs.getString("tipo_intervento"), rs.getString("arto_interessato"), rs.getInt("punteggio_womac_1"), 
+				rs.getInt("punteggio_womac_2"), rs.getInt("punteggio_womac_3"), rs.getInt("punteggio_womac_4"),
 				 rs.getInt("numeroSedute"),rs.getDate("seduta1").toLocalDate()));
 		}
             
@@ -227,7 +235,7 @@ public class Dao {
 	        {
 	            Connection conn = ConnectDB.getConnection();
 	            PreparedStatement st = conn.prepareStatement(sql);
-	            st.setInt(1, paziente.getPunteggioWomac());
+	            st.setInt(1, paziente.getPunteggioWomac1());
 	            st.setInt(2, paziente.getNumeroSedute());
 	            st.setInt(3, paziente.getIdPaziente());
 	            st.executeUpdate();

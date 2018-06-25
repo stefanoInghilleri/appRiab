@@ -11,22 +11,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="776.0" style="-fx-background-color: #b2dce8; -fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ProtocolloWomacController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="776.0" style="-fx-background-color: #006E8D;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ProtocolloWomacController">
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="375.0" style="-fx-background-color: #b2dce8;" text="Protocollo WOMAC" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="375.0" text="Protocollo WOMAC" textAlignment="CENTER" textFill="#f8f5f5" BorderPane.alignment="CENTER">
          <font>
             <Font name="Lucida Bright Demibold" size="30.0" />
          </font>
       </Label>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
               
-            <TextArea fx:id="txtNb" layoutX="16.0" layoutY="79.0" prefHeight="177.0" prefWidth="743.0" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="79.0" />
-            <HBox layoutY="1.0" prefHeight="69.0" prefWidth="774.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="401.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TextArea fx:id="txtNb" layoutX="69.0" layoutY="79.0" prefHeight="205.0" prefWidth="632.0" style="-fx-border-color: #006E8D;" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="79.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextArea>
+            <HBox layoutY="1.0" prefHeight="69.0" prefWidth="774.0" AnchorPane.bottomAnchor="401.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="184.0" text="Nome Paziente: " textAlignment="CENTER" textFill="#fffcfc">
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="184.0" text="Nome Paziente: " textAlignment="CENTER" textFill="#252424">
                      <font>
                         <Font name="Lucida Bright Demibold" size="18.0" />
                      </font>
@@ -37,72 +40,71 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="txtUser" alignment="CENTER" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #95b4c6;" textAlignment="CENTER">
+                  <Label fx:id="txtUser" prefHeight="50.0" prefWidth="303.0" textAlignment="CENTER" textFill="#1b1a1a">
                      <font>
                         <Font name="Lucida Bright Demibold" size="30.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
-            <TextArea fx:id="txtDomandaWomac" layoutX="14.0" layoutY="280.0" prefHeight="45.0" prefWidth="740.0" />
-            <Button contentDisplay="CENTER" layoutX="403.0" layoutY="402.0" mnemonicParsing="false" onAction="#doForward" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Avanti" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnAvanti" contentDisplay="CENTER" layoutX="403.0" layoutY="402.0" mnemonicParsing="false" onAction="#doForward" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #006E8D;" text="Avanti" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold" size="16.0" />
                </font>
             </Button>
-            <Button contentDisplay="CENTER" layoutX="196.0" layoutY="402.0" mnemonicParsing="false" onAction="#doBack" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Indietro" textAlignment="CENTER" textFill="WHITE">
+            <Button contentDisplay="CENTER" layoutX="196.0" layoutY="402.0" mnemonicParsing="false" onAction="#doBack" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #006E8D;" text="Indietro" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnProcedi" contentDisplay="CENTER" layoutX="596.0" layoutY="402.0" mnemonicParsing="false" onAction="#doProcedi" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Procedi" textAlignment="CENTER" textFill="WHITE" visible="false">
+            <Button fx:id="btnProcedi" contentDisplay="CENTER" layoutX="596.0" layoutY="402.0" mnemonicParsing="false" onAction="#doProcedi" prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #006E8D;" text="Procedi" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="Lucida Bright Demibold" size="16.0" />
                </font>
             </Button>
-            <HBox alignment="CENTER" layoutX="1.0" layoutY="327.0" prefHeight="51.0" prefWidth="774.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="327.0">
+            <HBox alignment="CENTER" layoutX="1.0" layoutY="285.0" prefHeight="103.0" prefWidth="776.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="285.0">
                <children>
-                  <RadioButton id="0" mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" text="Nessuno" textAlignment="CENTER" textFill="WHITE">
+                  <RadioButton id="4" mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" text="Nessuno" textAlignment="CENTER" textFill="#171717">
                      <font>
-                        <Font name="Lucida Bright Regular" size="14.0" />
+                        <Font name="Lucida Bright Regular" size="18.0" />
                      </font>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                        <Insets top="30.0" />
                      </padding>
                      <toggleGroup>
                         <ToggleGroup fx:id="womac" />
                      </toggleGroup>
                   </RadioButton>
-                        <RadioButton id="1" mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" text="Lieve" textAlignment="CENTER" textFill="WHITE" toggleGroup="$womac">
+                        <RadioButton id="3" mnemonicParsing="false" prefHeight="60.0" prefWidth="124.0" text="Lieve" textAlignment="CENTER" textFill="#1b1a1a" toggleGroup="$womac">
                            <font>
-                              <Font name="Lucida Bright Regular" size="14.0" />
+                              <Font name="Lucida Bright Regular" size="18.0" />
                            </font>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                        <Insets top="30.0" />
                      </padding>
                         </RadioButton>
-                        <RadioButton id="2" mnemonicParsing="false" prefHeight="17.0" prefWidth="151.0" text="Moderato" textFill="WHITE" toggleGroup="$womac">
+                        <RadioButton id="2" mnemonicParsing="false" prefHeight="59.0" prefWidth="151.0" text="Moderato" textFill="#171717" toggleGroup="$womac">
                            <font>
-                              <Font name="Lucida Bright Regular" size="14.0" />
+                              <Font name="Lucida Bright Regular" size="18.0" />
                            </font>
                      <padding>
                         <Insets top="30.0" />
                      </padding>
                   </RadioButton>
-                        <RadioButton id="3" mnemonicParsing="false" prefHeight="17.0" prefWidth="141.0" text="Forte" textAlignment="CENTER" textFill="WHITE" toggleGroup="$womac">
+                        <RadioButton id="1" mnemonicParsing="false" prefHeight="17.0" prefWidth="141.0" text="Forte" textAlignment="CENTER" textFill="#1b1a1a" toggleGroup="$womac">
                            <font>
-                              <Font name="Lucida Bright Regular" size="14.0" />
+                              <Font name="Lucida Bright Regular" size="18.0" />
                            </font>
                      <padding>
                         <Insets top="30.0" />
                      </padding>
                   </RadioButton>
-                        <RadioButton id="4" mnemonicParsing="false" prefHeight="17.0" prefWidth="101.0" text="Estremo" textFill="WHITE" toggleGroup="$womac">
+                        <RadioButton id="0" mnemonicParsing="false" prefHeight="54.0" prefWidth="120.0" text="Estremo" textFill="#111010" toggleGroup="$womac">
                            <font>
-                              <Font name="Lucida Bright Regular" size="14.0" />
+                              <Font name="Lucida Bright Regular" size="18.0" />
                            </font>
                      <padding>
                         <Insets top="30.0" />

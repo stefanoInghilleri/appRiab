@@ -12,11 +12,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PunteggioProtocolloController">
    <center>
-      <AnchorPane prefHeight="91.0" prefWidth="401.0" style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="91.0" prefWidth="401.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" layoutX="94.0" prefHeight="73.0" prefWidth="600.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="264.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="94.0" prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="264.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label text="Punteggio Ottenuto:" textFill="WHITE">
+                  <Label text="Punteggio Ottenuto:" textFill="#171717">
                      <font>
                         <Font name="Lucida Bright Demibold" size="18.0" />
                      </font>
@@ -40,17 +40,20 @@
                   </TextField>
                </children>
             </HBox>
-            <Button layoutX="215.0" layoutY="254.0" mnemonicParsing="false" onAction="#doProcedi" prefHeight="56.0" prefWidth="169.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Procedi" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="215.0" layoutY="254.0" mnemonicParsing="false" onAction="#doProcedi" prefHeight="56.0" prefWidth="169.0" style="-fx-background-color: #006E8D;" text="Procedi" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold" size="18.0" />
                </font>
             </Button>
-            <TextArea fx:id="txtIndicazioni" layoutX="51.0" layoutY="100.0" prefHeight="140.0" prefWidth="510.0" promptText="Indicazioni" />
+            <TextArea fx:id="txtIndicazioni" layoutX="51.0" layoutY="100.0" prefHeight="140.0" prefWidth="510.0" promptText="Indicazioni">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
          </children>
       </AnchorPane>
    </center>
    <top>
-      <Label fx:id="txtUser" alignment="CENTER" prefHeight="55.0" prefWidth="610.0" style="-fx-background-color: #b2dce8;" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label fx:id="txtUser" alignment="CENTER" prefHeight="55.0" prefWidth="610.0" style="-fx-background-color: #006E8D;" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Lucida Bright Demibold" size="30.0" />
          </font>

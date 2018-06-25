@@ -12,6 +12,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import model.DomandaWomac;
 import model.Model;
 import model.Paziente;
@@ -30,14 +32,14 @@ public class ProtocolloWomacController {
 	    @FXML
 	    private Label txtUser;
 
-	    @FXML
-	    private TextArea txtDomandaWomac;
+
 
 	    @FXML
 	    private ToggleGroup womac;
 	    
+	    @FXML
+	    private Button btnAvanti;
 	
-
 	    @FXML
 	    private Button btnProcedi;
 
@@ -49,16 +51,10 @@ public class ProtocolloWomacController {
 		
 		 try{
 		 
-		 if(cntDom==24)
-			 this.btnProcedi.setVisible(true);
-		
-		 else{ 
 		 if(cntDom<23){
-	    
-			 this.txtDomandaWomac.clear();
-			 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
-			 this.txtNb.clear();
+	  	 this.txtNb.clear();
 			 this.txtNb.setText(domande.get(cntDom).getNotaBene());
+			 this.txtNb.appendText("\n\n"+domande.get(cntDom).getDomanda());
 			 
 			 if(!domande.get(cntDom+1).isContato() ){
 	     
@@ -71,40 +67,38 @@ public class ProtocolloWomacController {
 			 else{
 				 womac.getToggles().get(domande.get(cntDom+1).getRisposta()).setSelected(true);	
 				 cntDom++;
-				 this.txtDomandaWomac.clear();
-				 this.txtDomandaWomac.setText(domande.get(cntDom+1).getDomanda());
 				 this.txtNb.clear();
 				 this.txtNb.setText(domande.get(cntDom+1).getNotaBene());
+				 this.txtNb.appendText("\n\n"+domande.get(cntDom+1).getDomanda());
 			 }
 			 
 		 }
 		 
-		 else{
-			 this.txtDomandaWomac.clear();
-			 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
+		 else if(cntDom==23){
+			 womac.getSelectedToggle().setSelected(false);
+			 this.btnAvanti.setVisible(false);
+			 this.btnProcedi.setVisible(true);
 			 this.txtNb.clear();
 			 this.txtNb.setText(domande.get(cntDom).getNotaBene());
-			 RadioButton selected = (RadioButton) womac.getSelectedToggle();
-			 domande.get(cntDom).setRisposta(Integer.parseInt(selected.getId()));
-			 domande.get(cntDom).setContato(true);
-			 womac.getSelectedToggle().setSelected(false);
-			 cntDom++;
-		 }
-		 }
+			 this.txtNb.appendText("\n\n"+domande.get(cntDom).getDomanda());
+			// RadioButton selected = (RadioButton) womac.getSelectedToggle();
+			 //domande.get(cntDom).setRisposta(Integer.parseInt(selected.getId()));
+			 //domande.get(cntDom).setContato(true);
+			 //womac.getSelectedToggle().setSelected(false);
+		 	}
 		 }catch(Exception e){
-			 this.txtDomandaWomac.setText("Attenzione! Assicurati di aver selezionato la domanda");
+			 Text t=new Text();
+			 t.setText("Attenzione! Assicurati di aver selezionato la risposta");
+	
 		 }
 	 }
-	 /**
-	  * test 1
-	  * */
+
 
 	 @FXML
 	    void doProcedi(ActionEvent event) throws IOException {
 		 
 		 RadioButton selected = (RadioButton) womac.getSelectedToggle();
-		 domande.get(23).setRisposta(Integer.parseInt(selected.getId()));
-
+		 domande.get(cntDom).setRisposta(Integer.parseInt(selected.getId()));
 		 String indicazione=model.calcolaPunteggio(domande, paziente);
 		 paziente.setIndicazione(indicazione);
 		 main.showPunteggioWomac(paziente);
@@ -113,15 +107,17 @@ public class ProtocolloWomacController {
 	 @FXML
 	    void doBack(ActionEvent event) throws IOException {
 		 
+		 if(cntDom==24){
+			 this.btnAvanti.setVisible(true);
+			this.btnProcedi.setVisible(false); 
+		 }
 
 		 if(cntDom>1){
 		 cntDom--;
-		 System.out.println("domanda numero" +cntDom+" risposta: "+domande.get(cntDom).getRisposta());
 		 womac.getToggles().get(domande.get(cntDom).getRisposta()).setSelected(true);
-		 this.txtDomandaWomac.clear();
-		 this.txtDomandaWomac.setText(domande.get(cntDom).getDomanda());
 		 this.txtNb.clear();
 		 this.txtNb.setText(domande.get(cntDom).getNotaBene());
+		 this.txtNb.appendText("\n\n"+domande.get(cntDom).getDomanda());
 		 }
 	 }
 	 
@@ -133,8 +129,7 @@ public class ProtocolloWomacController {
 		this.txtUser.setText(p.getNome()+" "+p.getCognome());
 		domande=model.getDomandeWomac();
 		this.txtNb.setText(domande.get(0).getNotaBene());
-		this.txtDomandaWomac.setText(domande.get(0).getDomanda());
-		
+		 this.txtNb.appendText("\n\n"+domande.get(0).getDomanda());
 	}
 
 }

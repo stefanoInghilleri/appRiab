@@ -5,11 +5,13 @@ public class Warning {
 	private int idWarning;
 	private String tipologia;
 	private String descrizione;
+	private String categoria;
 	
-	public Warning(int idWarning, String tipologia, String descrizione) {
+	public Warning(int idWarning, String categoria,String tipologia, String descrizione) {
 		this.idWarning = idWarning;
 		this.tipologia = tipologia;
 		this.descrizione = descrizione;
+		this.categoria=categoria;
 	}
 
 	public int getIdWarning() {
@@ -56,6 +58,14 @@ public class Warning {
 		if (idWarning != other.idWarning)
 			return false;
 		return true;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override

@@ -9,26 +9,26 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LoginController">
    <center>
-      <AnchorPane prefHeight="149.0" prefWidth="600.0" style="-fx-background-color: #95b4c6;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="149.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="59.0" prefHeight="54.0" prefWidth="113.0" text="Nome" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="59.0" prefHeight="54.0" prefWidth="113.0" text="Nome" textAlignment="CENTER" textFill="#0d0d0d">
                <font>
                   <Font name="Lucida Bright Demibold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="130.0" prefHeight="54.0" prefWidth="113.0" text="Cognome" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="130.0" prefHeight="54.0" prefWidth="113.0" text="Cognome" textAlignment="CENTER" textFill="#1e1e1e">
                <font>
                   <Font name="Lucida Bright Demibold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNomeLogin" layoutX="226.0" layoutY="73.0" />
-            <TextField fx:id="txtCognomeLogin" layoutX="226.0" layoutY="144.0" />
-            <Button layoutX="216.0" layoutY="235.0" mnemonicParsing="false" onAction="#doLogin" prefHeight="58.0" prefWidth="168.0" style="-fx-background-color: #95b4c6; -fx-border-color: white; -fx-border-radius: 20px; -fx-border-width: 2px;" text="Procedi" textFill="WHITE">
+            <TextField fx:id="txtNomeLogin" layoutX="226.0" layoutY="73.0" style="-fx-border-color: #006E8D;" />
+            <TextField fx:id="txtCognomeLogin" layoutX="226.0" layoutY="144.0" style="-fx-border-color: #006E8D;" />
+            <Button layoutX="216.0" layoutY="235.0" mnemonicParsing="false" onAction="#doLogin" prefHeight="58.0" prefWidth="168.0" style="-fx-background-color: #006E8D;" text="Procedi" textFill="WHITE">
                <font>
                   <Font name="Lucida Bright Demibold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="txtInfoLogin" alignment="CENTER" layoutY="14.0" prefHeight="57.0" prefWidth="600.0" style="-fx-background-color: #95b4c6;" textFill="#f81c1c" AnchorPane.bottomAnchor="270.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+            <Label fx:id="txtInfoLogin" alignment="CENTER" layoutY="14.0" prefHeight="57.0" prefWidth="600.0" textFill="#f81c1c" AnchorPane.bottomAnchor="270.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font name="Lucida Bright Demibold" size="18.0" />
                </font>
@@ -37,7 +37,7 @@
       </AnchorPane>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #b2dce8;" text="Accesso" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #006E8D;" text="Accesso" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Lucida Bright Demibold" size="30.0" />
          </font>
